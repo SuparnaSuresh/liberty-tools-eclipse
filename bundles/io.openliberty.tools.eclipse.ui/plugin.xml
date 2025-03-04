@@ -779,7 +779,6 @@
            commandId="io.openliberty.tools.eclipse.debug.LibertyDebugReconnect">
      </handler>
   </extension>
-
   <extension point="org.eclipse.debug.ui.consoleLineTrackers">
   	<consoleLineTracker
   			id="io.openliberty.tools.eclipse.ui.launch.consoleLineTracker"
