@@ -15,7 +15,7 @@
 <plugin>
 
    <extension point="org.eclipse.ui.startup">
-      <startup class="io.openliberty.tools.eclipse.EarlyStartupRegistration"/>
+		<startup class="io.openliberty.tools.eclipse.EarlyStartupRegistration" />
    </extension>
 
    <!-- Contexts -->
@@ -182,10 +182,10 @@
    <extension point="org.eclipse.ui.bindings">
 
       <!-- Dashboard -->
-      <key commandId="io.openliberty.tools.eclipse.open.dashboard.command"
-           schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
-           contextId="org.eclipse.ui.contexts.window"
-           sequence="M3+L"/>
+		<key commandId="io.openliberty.tools.eclipse.open.dashboard.command"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+			contextId="org.eclipse.ui.contexts.window"
+			sequence="M3+L" />
       <key
             commandId="io.openliberty.tools.eclipse.project.start.command"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
@@ -362,9 +362,12 @@
                 <visibleWhen>
                     <iterate operator="or" ifEmpty="false">
                           <and>
-                              <instanceof value="org.eclipse.core.runtime.IAdaptable"/>
+							<instanceof
+								value="org.eclipse.core.runtime.IAdaptable" />
                               <not>
-                                  <test forcePluginActivation="true" property="org.eclipse.debug.ui.projectNature" value="io.openliberty.tools.eclipse.ui.libertyNature"/>
+								<test forcePluginActivation="true"
+									property="org.eclipse.debug.ui.projectNature"
+									value="io.openliberty.tools.eclipse.ui.libertyNature" />
                               </not>
                           </and>
 
@@ -426,11 +429,14 @@
           <contextualLaunch>
               <enablement>
                   <with variable="selection">
-                      <count value="1"/>
+						<count value="1" />
                       <iterate>
                           <and>
-                              <instanceof value="org.eclipse.core.runtime.IAdaptable"/>
-                              <test forcePluginActivation="true" property="org.eclipse.debug.ui.projectNature" value="io.openliberty.tools.eclipse.ui.libertyNature"/>
+								<instanceof
+									value="org.eclipse.core.runtime.IAdaptable" />
+								<test forcePluginActivation="true"
+									property="org.eclipse.debug.ui.projectNature"
+									value="io.openliberty.tools.eclipse.ui.libertyNature" />
                           </and>
                       </iterate>
                   </with>
@@ -448,11 +454,14 @@
           <contextualLaunch>
               <enablement>
                   <with variable="selection">
-                      <count value="1"/>
+						<count value="1" />
                       <iterate>
                           <and>
-                              <instanceof value="org.eclipse.core.runtime.IAdaptable"/>
-                              <test forcePluginActivation="true" property="org.eclipse.debug.ui.projectNature" value="io.openliberty.tools.eclipse.ui.libertyNature"/>
+								<instanceof
+									value="org.eclipse.core.runtime.IAdaptable" />
+								<test forcePluginActivation="true"
+									property="org.eclipse.debug.ui.projectNature"
+									value="io.openliberty.tools.eclipse.ui.libertyNature" />
                           </and>
                       </iterate>
                   </with>
@@ -470,11 +479,14 @@
           <contextualLaunch>
               <enablement>
                   <with variable="selection">
-                      <count value="1"/>
+						<count value="1" />
                       <iterate>
                           <and>
-                              <instanceof value="org.eclipse.core.runtime.IAdaptable"/>
-                              <test forcePluginActivation="true" property="org.eclipse.debug.ui.projectNature" value="io.openliberty.tools.eclipse.ui.libertyNature"/>
+								<instanceof
+									value="org.eclipse.core.runtime.IAdaptable" />
+								<test forcePluginActivation="true"
+									property="org.eclipse.debug.ui.projectNature"
+									value="io.openliberty.tools.eclipse.ui.libertyNature" />
                           </and>
                       </iterate>
                   </with>
@@ -492,11 +504,14 @@
           <contextualLaunch>
               <enablement>
                   <with variable="selection">
-                      <count value="1"/>
+						<count value="1" />
                       <iterate>
                           <and>
-                              <instanceof value="org.eclipse.core.runtime.IAdaptable"/>
-                              <test forcePluginActivation="true" property="org.eclipse.debug.ui.projectNature" value="io.openliberty.tools.eclipse.ui.libertyNature"/>
+								<instanceof
+									value="org.eclipse.core.runtime.IAdaptable" />
+								<test forcePluginActivation="true"
+									property="org.eclipse.debug.ui.projectNature"
+									value="io.openliberty.tools.eclipse.ui.libertyNature" />
                           </and>
                       </iterate>
                   </with>
@@ -514,11 +529,14 @@
           <contextualLaunch>
               <enablement>
                   <with variable="selection">
-                      <count value="1"/>
+						<count value="1" />
                       <iterate>
                           <and>
-                              <instanceof value="org.eclipse.core.runtime.IAdaptable"/>
-                              <test forcePluginActivation="true" property="org.eclipse.debug.ui.projectNature" value="io.openliberty.tools.eclipse.ui.libertyNature"/>
+								<instanceof
+									value="org.eclipse.core.runtime.IAdaptable" />
+								<test forcePluginActivation="true"
+									property="org.eclipse.debug.ui.projectNature"
+									value="io.openliberty.tools.eclipse.ui.libertyNature" />
                           </and>
                       </iterate>
                   </with>
@@ -536,11 +554,14 @@
           <contextualLaunch>
               <enablement>
                   <with variable="selection">
-                      <count value="1"/>
+						<count value="1" />
                       <iterate>
                           <and>
-                              <instanceof value="org.eclipse.core.runtime.IAdaptable"/>
-                              <test forcePluginActivation="true" property="org.eclipse.debug.ui.projectNature" value="io.openliberty.tools.eclipse.ui.libertyNature"/>
+								<instanceof
+									value="org.eclipse.core.runtime.IAdaptable" />
+								<test forcePluginActivation="true"
+									property="org.eclipse.debug.ui.projectNature"
+									value="io.openliberty.tools.eclipse.ui.libertyNature" />
                           </and>
                       </iterate>
                   </with>
@@ -558,11 +579,14 @@
           <contextualLaunch>
               <enablement>
                   <with variable="selection">
-                      <count value="1"/>
+						<count value="1" />
                       <iterate>
                           <and>
-                              <instanceof value="org.eclipse.core.runtime.IAdaptable"/>
-                              <test forcePluginActivation="true" property="org.eclipse.debug.ui.projectNature" value="io.openliberty.tools.eclipse.ui.libertyNature"/>
+								<instanceof
+									value="org.eclipse.core.runtime.IAdaptable" />
+								<test forcePluginActivation="true"
+									property="org.eclipse.debug.ui.projectNature"
+									value="io.openliberty.tools.eclipse.ui.libertyNature" />
                           </and>
                       </iterate>
                   </with>
@@ -580,11 +604,14 @@
           <contextualLaunch>
               <enablement>
                   <with variable="selection">
-                      <count value="1"/>
+						<count value="1" />
                       <iterate>
                           <and>
-                              <instanceof value="org.eclipse.core.runtime.IAdaptable"/>
-                              <test forcePluginActivation="true" property="org.eclipse.debug.ui.projectNature" value="io.openliberty.tools.eclipse.ui.libertyNature"/>
+								<instanceof
+									value="org.eclipse.core.runtime.IAdaptable" />
+								<test forcePluginActivation="true"
+									property="org.eclipse.debug.ui.projectNature"
+									value="io.openliberty.tools.eclipse.ui.libertyNature" />
                           </and>
                       </iterate>
                   </with>
@@ -602,12 +629,17 @@
           <contextualLaunch>
               <enablement>
                   <with variable="selection">
-                      <count value="1"/>
+						<count value="1" />
                       <iterate>
                           <and>
-                              <instanceof value="org.eclipse.core.runtime.IAdaptable"/>
-                              <test forcePluginActivation="true" property="org.eclipse.debug.ui.projectNature" value="io.openliberty.tools.eclipse.ui.libertyNature"/>
-                              <test forcePluginActivation="true" property="org.eclipse.debug.ui.projectNature" value="org.eclipse.m2e.core.maven2Nature"/>
+								<instanceof
+									value="org.eclipse.core.runtime.IAdaptable" />
+								<test forcePluginActivation="true"
+									property="org.eclipse.debug.ui.projectNature"
+									value="io.openliberty.tools.eclipse.ui.libertyNature" />
+								<test forcePluginActivation="true"
+									property="org.eclipse.debug.ui.projectNature"
+									value="org.eclipse.m2e.core.maven2Nature" />
                           </and>
                       </iterate>
                   </with>
@@ -625,12 +657,17 @@
           <contextualLaunch>
               <enablement>
                   <with variable="selection">
-                      <count value="1"/>
+						<count value="1" />
                       <iterate>
                           <and>
-                              <instanceof value="org.eclipse.core.runtime.IAdaptable"/>
-                              <test forcePluginActivation="true" property="org.eclipse.debug.ui.projectNature" value="io.openliberty.tools.eclipse.ui.libertyNature"/>
-                              <test forcePluginActivation="true" property="org.eclipse.debug.ui.projectNature" value="org.eclipse.m2e.core.maven2Nature"/>
+								<instanceof
+									value="org.eclipse.core.runtime.IAdaptable" />
+								<test forcePluginActivation="true"
+									property="org.eclipse.debug.ui.projectNature"
+									value="io.openliberty.tools.eclipse.ui.libertyNature" />
+								<test forcePluginActivation="true"
+									property="org.eclipse.debug.ui.projectNature"
+									value="org.eclipse.m2e.core.maven2Nature" />
                           </and>
                       </iterate>
                   </with>
@@ -648,12 +685,17 @@
           <contextualLaunch>
               <enablement>
                   <with variable="selection">
-                      <count value="1"/>
+						<count value="1" />
                       <iterate>
                           <and>
-                              <instanceof value="org.eclipse.core.runtime.IAdaptable"/>
-                              <test forcePluginActivation="true" property="org.eclipse.debug.ui.projectNature" value="io.openliberty.tools.eclipse.ui.libertyNature"/>
-                              <test forcePluginActivation="true" property="org.eclipse.debug.ui.projectNature" value="org.eclipse.buildship.core.gradleprojectnature"/>
+								<instanceof
+									value="org.eclipse.core.runtime.IAdaptable" />
+								<test forcePluginActivation="true"
+									property="org.eclipse.debug.ui.projectNature"
+									value="io.openliberty.tools.eclipse.ui.libertyNature" />
+								<test forcePluginActivation="true"
+									property="org.eclipse.debug.ui.projectNature"
+									value="org.eclipse.buildship.core.gradleprojectnature" />
                           </and>
                       </iterate>
                   </with>
@@ -668,11 +710,11 @@
            id="io.openliberty.tools.eclipse.view.category"
            name="Liberty">
      </category>
-     <view id="io.openliberty.tools.eclipse.views.liberty.devmode.dashboard"
-           name="Liberty Dashboard"
-           icon="icons/openLibertyLogo.png"
-           category="io.openliberty.tools.eclipse.view.category"
-           class="io.openliberty.tools.eclipse.ui.dashboard.DashboardView"/>
+		<view id="io.openliberty.tools.eclipse.views.liberty.devmode.dashboard"
+			name="Liberty Dashboard"
+			icon="icons/openLibertyLogo.png"
+			category="io.openliberty.tools.eclipse.view.category"
+			class="io.openliberty.tools.eclipse.ui.dashboard.DashboardView" />
   </extension>
 
   <!-- Nature -->
@@ -731,12 +773,18 @@
 			</command>
 	  </menuContribution>
   </extension>
-  <extension
-        point="org.eclipse.ui.handlers">
+  <extension point="org.eclipse.ui.handlers">
      <handler
            class="io.openliberty.tools.eclipse.debug.LibertyDebugReconnectHandler"
            commandId="io.openliberty.tools.eclipse.debug.LibertyDebugReconnect">
      </handler>
   </extension>
+
+  <extension point="org.eclipse.debug.ui.consoleLineTrackers">
+  	<consoleLineTracker
+  			id="io.openliberty.tools.eclipse.ui.launch.consoleLineTracker"
+			processType="io.openliberty.ui.console"
+			class="io.openliberty.tools.eclipse.ui.launch.ConsoleLineTracker" />
+	</extension>
 
 </plugin>
