@@ -85,8 +85,11 @@ public class ConsoleHyperLinkDetection implements IPatternMatchListenerDelegate 
 				}
 			}
 
-		} catch (Exception exception) {
-			throw new RuntimeException(exception);
+		} catch (Exception e) {
+			String msg = "An error occurred while adding hyperlinks to external URLs";
+			if (Trace.isEnabled()) {
+				Trace.getTracer().trace(Trace.TRACE_TOOLS, msg, e);
+			}
 		}
 	}
 }
