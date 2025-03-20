@@ -738,5 +738,14 @@
            commandId="io.openliberty.tools.eclipse.debug.LibertyDebugReconnect">
      </handler>
   </extension>
+  <extension
+         point="org.eclipse.ui.console.consolePatternMatchListeners">
+      <consolePatternMatchListener
+            class="io.openliberty.tools.eclipse.ui.launch.ConsoleHyperLinkDetection"
+            id="o.openliberty.tools.eclipse.ui.launch.ConsoleHyperLinkDetection"
+            regex="https?://[a-zA-Z0-9.-]+(:\d+)?(/[^ ]*)?">
+         <enablement></enablement>
+      </consolePatternMatchListener>
+   </extension>
 
 </plugin>
