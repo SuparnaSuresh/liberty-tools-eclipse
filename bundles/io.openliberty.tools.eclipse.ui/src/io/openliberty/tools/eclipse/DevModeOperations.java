@@ -68,8 +68,8 @@ public class DevModeOperations {
     /**
      * Constants.
      */
-    public static final String DEVMODE_START_PARMS_DIALOG_TITLE = "Liberty Dev Mode";
-    public static final String DEVMODE_START_PARMS_DIALOG_MSG = "Specify custom parameters for the liberty dev command.";
+    public static final String DEVMODE_START_PARMS_DIALOG_TITLE = Messages.getMessage("devmode_start_dialog_title");
+    public static final String DEVMODE_START_PARMS_DIALOG_MSG = Messages.getMessage("devmode_start_dialog_msg");
 
     public static final String DEVMODE_COMMAND_EXIT = "exit" + System.lineSeparator();
     public static final String DEVMODE_COMMAND_RUN_TESTS = System.lineSeparator();
@@ -188,13 +188,13 @@ public class DevModeOperations {
         try {
             project = projectModel.getProject(projectName);
             if (project == null) {
-                throw new Exception("Unable to find internal instance of project " + projectName);
+                throw new Exception(Messages.getMessage("internal_project_not_found", projectName));
             }
 
             // Get the absolute path to the application project.
             String projectPath = project.getPath();
             if (projectPath == null) {
-                throw new Exception("Unable to find the path to selected project " + projectName);
+                throw new Exception(Messages.getMessage("project_path_not_found", projectName));
             }
 
             // If in debug mode, adjust the start parameters.
@@ -239,16 +239,14 @@ public class DevModeOperations {
                         String stopGradleDaemonCmd = CommandBuilder.getGradleCommandLine(projectPath, " --stop", pathEnv);
                         executeCommand(stopGradleDaemonCmd, projectPath);
                     } catch (IOException | InterruptedException e) {
-                        Logger.logError("An attempt to stop the Gradle daemon failed....");
+                        Logger.logError(Messages.getMessage("gradle_daemon_stop_failed"));
                     }
 
                 }
                 cmd = CommandBuilder.getGradleCommandLine(projectPath,
                                                           (runProjectClean == true ? " clean " : "") + "libertyDev " + startParms, pathEnv);
-
             } else {
-                throw new Exception("Unexpected project build type: " + buildType + ". Project " + projectName
-                                    + "does not appear to be a Maven or Gradle built project.");
+                throw new Exception(Messages.getMessage("unexpected_build_type", buildType, projectName));
             }
 
             // Run the application in dev mode.
@@ -824,8 +822,7 @@ public class DevModeOperations {
                 cmd = CommandBuilder.getGradleCommandLine(projectPath, "libertyStop", pathEnv);
                 buildTypeName = "Gradle";
             } else {
-                throw new Exception("Unexpected project build type: " + buildType + ". Project " + projectName
-                                    + "does not appear to be a Maven or Gradle built project.");
+                throw new Exception(Messages.getMessage("unexpected_build_type", buildType, projectName));
             }
 
             // Issue the command.
@@ -839,7 +836,7 @@ public class DevModeOperations {
              * Per: https://stackoverflow.com/questions/29793071/rcp-no-progress-dialog-when-starting-a-job it seems that job.setUser(true)
              * is no longer enough to result in the creation of a progress dialog.
              */
-            Job job = new Job("Stopping server via " + buildTypeName + " plugin") {
+            Job job = new Job(Messages.getMessage("stopping_server_job", buildTypeName)) {
 
                 @Override
                 protected IStatus run(IProgressMonitor monitor) {
@@ -1001,11 +998,11 @@ public class DevModeOperations {
             List<Project> mmps = project.getChildLibertyServerProjects();
             switch (mmps.size()) {
                 case 0:
-                    throw new Exception("Unable to find a child project that contains the Liberty server configuration.");
+                    throw new Exception(Messages.getMessage("child_project_not_found"));
                 case 1:
                     return mmps.get(0);
                 default:
-                    throw new Exception("Multiple child projects containing Liberty server configuration were found.");
+                    throw new Exception(Messages.getMessage("multiple_child_projects_found"));
             }
         }
 
@@ -1131,14 +1128,14 @@ public class DevModeOperations {
     }
 
     public void restartServer(String projectName) {
-        String restartCommand = "r";
-        try {
-            processController.writeToProcessStream(projectName, restartCommand);
-        } catch (Exception e) {
-            if (Trace.isEnabled()) {
-                Trace.getTracer().trace(Trace.TRACE_TOOLS, "An error was detected during the restart server." + projectName, e);
-            }
-        }
+    	String restartCommand = "r";
+    	try {
+    		processController.writeToProcessStream(projectName, restartCommand);
+    	} catch (Exception e) {
+    		if (Trace.isEnabled()) {
+    			Trace.getTracer().trace(Trace.TRACE_TOOLS, Messages.getMessage("restart_server_error", projectName), e);
+    		}
+    	}
     }
 
     /**
