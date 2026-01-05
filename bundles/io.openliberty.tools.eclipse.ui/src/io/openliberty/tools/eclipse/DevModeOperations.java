@@ -177,7 +177,7 @@ public class DevModeOperations {
             if (Trace.isEnabled()) {
                 Trace.getTracer().trace(Trace.TRACE_TOOLS, msg + " No-op.");
             }
-            ErrorHandler.processErrorMessage(NLS.bind(Messages.start_no_project_found, null), true);
+            ErrorHandler.processErrorMessage(Messages.getMessage("start_no_project_found"), true);
             return;
         }
 
@@ -268,7 +268,7 @@ public class DevModeOperations {
             if (Trace.isEnabled()) {
                 Trace.getTracer().trace(Trace.TRACE_TOOLS, "An error was detected during the start request on project " + projectName, e);
             }
-            ErrorHandler.processErrorMessage(NLS.bind(Messages.start_general_error, projectName), e, true);
+            ErrorHandler.processErrorMessage(Messages.getMessage("start_general_error", projectName), e, true);
             return;
         }
 
@@ -297,7 +297,7 @@ public class DevModeOperations {
             if (Trace.isEnabled()) {
                 Trace.getTracer().trace(Trace.TRACE_TOOLS, msg + " No-op.");
             }
-            ErrorHandler.processErrorMessage(NLS.bind(Messages.start_container_no_project_found, null), true);
+            ErrorHandler.processErrorMessage(Messages.getMessage("start_container_no_project_found"), true);
             return;
         }
 
@@ -381,7 +381,7 @@ public class DevModeOperations {
             if (Trace.isEnabled()) {
                 Trace.getTracer().trace(Trace.TRACE_TOOLS, msg, e);
             }
-            ErrorHandler.processErrorMessage(NLS.bind(Messages.start_container_general_error, projectName), e, true);
+            ErrorHandler.processErrorMessage(Messages.getMessage("start_container_general_error", projectName), e, true);
             return;
         }
 
@@ -412,7 +412,7 @@ public class DevModeOperations {
             if (Trace.isEnabled()) {
                 Trace.getTracer().trace(Trace.TRACE_TOOLS, msg + " No-op.");
             }
-            ErrorHandler.processErrorMessage(NLS.bind(Messages.stop_no_project_found, null), true);
+            ErrorHandler.processErrorMessage(Messages.getMessage("stop_no_project_found"), true);
             return;
         }
 
@@ -425,7 +425,7 @@ public class DevModeOperations {
 
         // Check if the stop action has already been issued of if a start action was never issued before.
         if (!processController.isProcessStarted(projectName)) {
-            String msg = NLS.bind(Messages.stop_already_issued, projectName);
+            String msg = Messages.getMessage("stop_already_issued", projectName);
             handleStopActionError(projectName, msg);
 
             return;
@@ -439,7 +439,7 @@ public class DevModeOperations {
             cleanupProcess(projectName);
 
         } catch (Exception e) {
-            String msg = NLS.bind(Messages.stop_general_error, projectName);
+            String msg = Messages.getMessage("stop_general_error", projectName);
             handleStopActionError(projectName, msg);
 
             return;
@@ -476,7 +476,7 @@ public class DevModeOperations {
             if (Trace.isEnabled()) {
                 Trace.getTracer().trace(Trace.TRACE_TOOLS, msg + " No-op.");
             }
-            ErrorHandler.processErrorMessage(NLS.bind(Messages.run_tests_no_project_found, null), true);
+            ErrorHandler.processErrorMessage(Messages.getMessage("run_tests_no_project_found"), true);
             return;
         }
 
@@ -489,7 +489,7 @@ public class DevModeOperations {
             if (Trace.isEnabled()) {
                 Trace.getTracer().trace(Trace.TRACE_TOOLS, msg + " No-op. ProcessController: " + processController);
             }
-            ErrorHandler.processErrorMessage(NLS.bind(Messages.run_tests_no_prior_start, projectName), true);
+            ErrorHandler.processErrorMessage(Messages.getMessage("run_tests_no_prior_start", projectName), true);
             return;
         }
 
@@ -501,7 +501,7 @@ public class DevModeOperations {
             if (Trace.isEnabled()) {
                 Trace.getTracer().trace(Trace.TRACE_TOOLS, msg, e);
             }
-            ErrorHandler.processErrorMessage(NLS.bind(Messages.run_tests_general_error, projectName), e, true);
+            ErrorHandler.processErrorMessage(Messages.getMessage("run_tests_general_error", projectName), e, true);
             return;
         }
 
@@ -532,7 +532,7 @@ public class DevModeOperations {
             if (Trace.isEnabled()) {
                 Trace.getTracer().trace(Trace.TRACE_TOOLS, msg + " No-op.");
             }
-            ErrorHandler.processErrorMessage(NLS.bind(Messages.mvn_int_test_report_no_project_found, null), true);
+            ErrorHandler.processErrorMessage(Messages.getMessage("mvn_int_test_report_no_project_found"), true);
             return;
         }
 
@@ -565,7 +565,7 @@ public class DevModeOperations {
             if (Trace.isEnabled()) {
                 Trace.getTracer().trace(Trace.TRACE_TOOLS, msg, e);
             }
-            ErrorHandler.processErrorMessage(NLS.bind(Messages.mvn_int_test_report_general_error, projectName), e, true);
+            ErrorHandler.processErrorMessage(Messages.getMessage("mvn_int_test_report_general_error", projectName), e, true);
             return;
         }
 
@@ -598,7 +598,7 @@ public class DevModeOperations {
             if (Trace.isEnabled()) {
                 Trace.getTracer().trace(Trace.TRACE_TOOLS, msg + " No-op.");
             }
-            ErrorHandler.processErrorMessage(NLS.bind(Messages.mvn_unit_test_report_no_project_found, null), true);
+            ErrorHandler.processErrorMessage(Messages.getMessage("mvn_unit_test_report_no_project_found"), true);
         }
 
         String projectName = iProject.getName();
@@ -629,7 +629,7 @@ public class DevModeOperations {
             if (Trace.isEnabled()) {
                 Trace.getTracer().trace(Trace.TRACE_TOOLS, msg, e);
             }
-            ErrorHandler.processErrorMessage(NLS.bind(Messages.mvn_unit_test_report_general_error, projectName), e, true);
+            ErrorHandler.processErrorMessage(Messages.getMessage("mvn_unit_test_report_general_error", projectName), e, true);
             return;
         }
 
@@ -660,7 +660,7 @@ public class DevModeOperations {
             if (Trace.isEnabled()) {
                 Trace.getTracer().trace(Trace.TRACE_TOOLS, msg + " No-op.");
             }
-            ErrorHandler.processErrorMessage(NLS.bind(Messages.gradle_test_report_no_project_found, null), true);
+            ErrorHandler.processErrorMessage(Messages.getMessage("gradle_test_report_no_project_found"), true);
             return;
         }
 
@@ -688,11 +688,11 @@ public class DevModeOperations {
                 if (Trace.isEnabled()) {
                     Trace.getTracer().trace(Trace.TRACE_TOOLS, msg + " No-op. Path: " + path);
                 }
-                ErrorHandler.processErrorMessage(
-                                                 NLS.bind(Messages.gradle_test_report_none_found, new String[] { projectName,
-                                                                                                                 DashboardView.APP_MENU_ACTION_RUN_TESTS,
-                                                                                                                 DashboardView.APP_MENU_ACTION_VIEW_GRADLE_TEST_REPORT }),
-                                                 true);
+                ErrorHandler
+                        .processErrorMessage(
+                                Messages.getMessage("gradle_test_report_none_found", projectName,
+                                        DashboardView.APP_MENU_ACTION_RUN_TESTS, DashboardView.APP_MENU_ACTION_VIEW_GRADLE_TEST_REPORT),
+                                true);
                 return;
             }
 
@@ -704,7 +704,7 @@ public class DevModeOperations {
             if (Trace.isEnabled()) {
                 Trace.getTracer().trace(Trace.TRACE_TOOLS, msg, e);
             }
-            ErrorHandler.processErrorMessage(NLS.bind(Messages.gradle_test_report_general_error, projectName));
+            ErrorHandler.processErrorMessage(Messages.getMessage("gradle_test_report_general_error", projectName));
             return;
         }
 
@@ -778,7 +778,7 @@ public class DevModeOperations {
      * @param baseMsg     The base message to display.
      */
     private void handleStopActionError(String projectName, String baseMsg) {
-        String stopPromptMsg = NLS.bind(Messages.issue_stop_prompt, null);
+        String stopPromptMsg = Messages.getMessage("issue_stop_prompt");
         String msg = baseMsg + "\n\n" + stopPromptMsg;
         Integer response = ErrorHandler.processWarningMessage(msg, true, new String[] { "Yes", "No" }, 0);
         if (response != null && response == 0) {
@@ -876,7 +876,7 @@ public class DevModeOperations {
                             }
                         }
                     } catch (Exception e) {
-                        ErrorHandler.processErrorMessage(NLS.bind(Messages.plugin_stop_issue_error, null), e, false);
+                        ErrorHandler.processErrorMessage(Messages.getMessage("plugin_stop_issue_error"), e, false);
                     }
                     return Status.OK_STATUS;
                 }
@@ -907,8 +907,8 @@ public class DevModeOperations {
                                 if (Trace.isEnabled()) {
                                     Trace.getTracer().trace(Trace.TRACE_TOOLS, msg);
                                 }
-                                ErrorHandler.rawErrorMessageDialog(NLS.bind(Messages.plugin_stop_timeout,
-                                                                            new String[] { projectName, Integer.toString(STOP_TIMEOUT_SECONDS) }));
+                                ErrorHandler.rawErrorMessageDialog(Messages.getMessage("plugin_stop_timeout",
+                                        projectName, Integer.toString(STOP_TIMEOUT_SECONDS)));
                             }
                         });
                         return;
@@ -924,7 +924,7 @@ public class DevModeOperations {
                         Display.getDefault().syncExec(new Runnable() {
                             @Override
                             public void run() {
-                                ErrorHandler.processErrorMessage(NLS.bind(Messages.plugin_stop_failed, rc), true);
+                                ErrorHandler.processErrorMessage(Messages.getMessage("plugin_stop_failed", rc), true);
                             }
                         });
                         return;
@@ -942,7 +942,7 @@ public class DevModeOperations {
             if (Trace.isEnabled()) {
                 Trace.getTracer().trace(Trace.TRACE_TOOLS, msg, e);
             }
-            ErrorHandler.processErrorMessage(NLS.bind(Messages.plugin_stop_general_error, projectName), e, true);
+            ErrorHandler.processErrorMessage(Messages.getMessage("plugin_stop_general_error", projectName), e, true);
             return;
         }
 
@@ -969,10 +969,8 @@ public class DevModeOperations {
             if (Trace.isEnabled()) {
                 Trace.getTracer().trace(Trace.TRACE_TOOLS, msg + " No-op. Paths checked: " + path1 + ", " + path2);
             }
-            ErrorHandler.processErrorMessage(NLS.bind(Messages.mvn_int_test_report_none_found, new String[] { projectName,
-                                                                                                              DashboardView.APP_MENU_ACTION_RUN_TESTS,
-                                                                                                              DashboardView.APP_MENU_ACTION_VIEW_MVN_IT_REPORT }),
-                                             true);
+            ErrorHandler.processErrorMessage(Messages.getMessage("mvn_int_test_report_none_found", projectName,
+                    DashboardView.APP_MENU_ACTION_RUN_TESTS, DashboardView.APP_MENU_ACTION_VIEW_MVN_IT_REPORT), true);
             return null;
         }
 
@@ -1031,10 +1029,8 @@ public class DevModeOperations {
             if (Trace.isEnabled()) {
                 Trace.getTracer().trace(Trace.TRACE_TOOLS, msg + " No-op. Paths checked: " + path1 + ", " + path2);
             }
-            ErrorHandler.processErrorMessage(NLS.bind(Messages.mvn_unit_test_report_none_found, new String[] { projectName,
-                                                                                                               DashboardView.APP_MENU_ACTION_RUN_TESTS,
-                                                                                                               DashboardView.APP_MENU_ACTION_VIEW_MVN_UT_REPORT }),
-                                             true);
+            ErrorHandler.processErrorMessage(Messages.getMessage("mvn_unit_test_report_none_found", projectName,
+                    DashboardView.APP_MENU_ACTION_RUN_TESTS, DashboardView.APP_MENU_ACTION_VIEW_MVN_UT_REPORT), true);
             return null;
         }
 
