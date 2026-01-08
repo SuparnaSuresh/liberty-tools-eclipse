@@ -80,13 +80,8 @@ public class OpenGradleTestReportAction implements ILaunchShortcut {
                 Trace.getTracer().trace(Trace.TRACE_UI, msg, e);
             }
             ErrorHandler.processErrorMessage(
-<<<<<<< HEAD
-                                             NLS.bind(Messages.launch_shortcut_error, LaunchConfigurationDelegateLauncher.LAUNCH_SHORTCUT_GRADLE_VIEW_TEST_REPORT),
-                                             e, true);
-=======
                     Messages.getMessage("launch_shortcut_error", LaunchConfigurationDelegateLauncher.LAUNCH_SHORTCUT_GRADLE_VIEW_TEST_REPORT),
                     e, true);
->>>>>>> 26a0cd9 (Update message props structure)
             return;
         }
 
