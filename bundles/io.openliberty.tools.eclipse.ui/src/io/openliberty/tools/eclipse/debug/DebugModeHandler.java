@@ -63,6 +63,7 @@ import io.openliberty.tools.eclipse.LibertyDevPlugin;
 import io.openliberty.tools.eclipse.Project;
 import io.openliberty.tools.eclipse.Project.BuildType;
 import io.openliberty.tools.eclipse.logging.Trace;
+import io.openliberty.tools.eclipse.messages.Messages;
 import io.openliberty.tools.eclipse.ui.dashboard.DashboardView;
 import io.openliberty.tools.eclipse.utils.ErrorHandler;
 import io.openliberty.tools.eclipse.utils.Utils;
@@ -133,8 +134,7 @@ public class DebugModeHandler {
                     addendum = GRADLE_DEVMODE_DEBUG_PORT_PARM + "=" + debugPort;
                 }
             } else {
-                throw new Exception("Unexpected project build type: " + buildType + ". Project" + project.getIProject().getName()
-                                    + "does not appear to be a Maven or Gradle built project.");
+                throw new Exception(Messages.getMessage("unexpected_build_type", buildType, project.getIProject().getName()));
             }
         }
 
@@ -175,8 +175,7 @@ public class DebugModeHandler {
         } else if (buildType == BuildType.GRADLE) {
             searchKey = GRADLE_DEVMODE_DEBUG_PORT_PARM;
         } else {
-            throw new Exception("Unexpected project build type: " + buildType + ". Project " + project.getIProject().getName()
-                                + "does not appear to be a Maven or Gradle built project.");
+            throw new Exception(Messages.getMessage("unexpected_build_type", buildType, project.getIProject().getName()));
         }
 
         if (inputParms.contains(searchKey)) {
@@ -218,7 +217,7 @@ public class DebugModeHandler {
     public void startDebugAttacher(Project project, ILaunch launch, String port) {
         String projectName = project.getIProject().getName();
 
-        Job job = new Job("Attaching Debugger to JVM...") {
+        Job job = new Job(Messages.getMessage("attaching_debugger_job")) {
             @Override
             protected IStatus run(IProgressMonitor monitor) {
                 try {
@@ -254,7 +253,7 @@ public class DebugModeHandler {
                         if (debugPort == null) {
                             // We failed to read the debug port. Throw an exception. This will be caught by the outer
                             // catch block and the job will return with an error.
-                            String errorMessage = "Failed to read debug port from server.env file";
+                            String errorMessage = Messages.getMessage("debug_port_read_error");
                             if (ex[0] != null) {
                                 // Add the last exception we got.
                                 throw new Exception(errorMessage, ex[0]);
@@ -281,7 +280,8 @@ public class DebugModeHandler {
                     launch.addDebugTarget(debugTarget);
 
                 } catch (Exception e) {
-                    return new Status(IStatus.ERROR, LibertyDevPlugin.PLUGIN_ID, JOB_STATUS_DEBUGGER_CONN_ERROR, "An error was detected while attaching the debugger to the JVM.", e);
+                    return new Status(IStatus.ERROR, LibertyDevPlugin.PLUGIN_ID, JOB_STATUS_DEBUGGER_CONN_ERROR,
+                            Messages.getMessage("debugger_attach_error"), e);
                 }
 
                 return Status.OK_STATUS;
@@ -411,7 +411,7 @@ public class DebugModeHandler {
             } catch (IOException e) {
                 if (Trace.isEnabled()) {
                     Trace.getTracer().trace(Trace.TRACE_UI,
-                                            "Error occurred while trying to connect to the remote virtual machine " + e.getMessage(), e);
+                            Messages.getMessage("debugger_connect_error", e.getMessage()), e);
                 }
             } catch (TimeoutException e2) {
                 // do nothing
@@ -588,9 +588,7 @@ public class DebugModeHandler {
                 TimeUnit.SECONDS.sleep(1);
             }
         }
-
-        throw new Exception("Timed out trying to attach the debugger to JVM on host: " + host + " and port: " + port
-                            + ".  If the server starts later you might try to manually connect the debugger from the launch in the Debug view  You can confirm the debug port used in the console output looking for a message like  'Liberty debug port: [ 63624 ]'.");
+        throw new Exception(Messages.getMessage("debugger_timeout_error", host, port));
     }
 
     private class DataHolder {
